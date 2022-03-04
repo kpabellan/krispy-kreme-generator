@@ -83,6 +83,10 @@ func generateKK() {
 	var siteKey string
 	var siteKeyOk bool
 
+	if len(tomorrowDay) == 1 {
+		tomorrowDay = "0" + tomorrowDay
+	}
+
 	if len(tomorrowMonth) == 1 {
 		tomorrowMonth = "0" + tomorrowMonth
 	}
