@@ -100,20 +100,20 @@ func generateKK() {
 	if err := chromedp.Run(ctx,
 		chromedp.Navigate(kkUrl),
 		chromedp.AttributeValue(`[data-sitekey]`, "data-sitekey", &siteKey, &siteKeyOk),
-		chromedp.Click("#cookie-consent-container > div.cta > a.btn.btn-secondary.btn-ok.shadow"),    // Accept cookies
-		chromedp.Evaluate(`document.querySelector("#btnSubmit").removeAttribute("disabled")`, nil),   // Enable the submit button
-		chromedp.SetAttributeValue("#btnSubmit", "class", "btn", chromedp.ByQuery),                   // Change submit button class to btn
-		chromedp.SendKeys("#ctl00_plcMain_txtFirstName", "Krispy"),                                   // Input first name
-		chromedp.SendKeys("#ctl00_plcMain_txtLastName", "Kreme"),                                     // Input last name
-		chromedp.SendKeys("#ctl00_plcMain_ddlBirthdayMM", tomorrowMonth),                             // Input birthday month
-		chromedp.SendKeys("#ctl00_plcMain_ddlBirthdayDD", tomorrowDay),                               // Input birthday day
-		chromedp.SendKeys("#ctl00_plcMain_txtZipCode", "90001"),                                      // Input zipcode
-		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt1st", randomCharNumerals(3)),              // Input phone number area code
-		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt2nd", randomCharNumerals(3)),              // Input phone number first 3 digits
-		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt3rd", randomCharNumerals(4)),              // Input phone number last 4 digits
-		chromedp.SendKeys("#ctl00_plcMain_txtEmail", "kp"+randomCharNumerals(5)+"@"+catchall+".com"), // Input email
-		chromedp.SendKeys("#ctl00_plcMain_txtPassword", "Donuttime123"),                              // Input password
-		chromedp.Click("#ctl00_plcMain_cbTermsOfUse"),                                                // Click terms of use
+		chromedp.Click("#cookie-consent-container > div.cta > a.btn.btn-secondary.btn-ok.shadow"),  // Accept cookies
+		chromedp.Evaluate(`document.querySelector("#btnSubmit").removeAttribute("disabled")`, nil), // Enable the submit button
+		chromedp.SetAttributeValue("#btnSubmit", "class", "btn", chromedp.ByQuery),                 // Change submit button class to btn
+		chromedp.SendKeys("#ctl00_plcMain_txtFirstName", "Krispy"),                                 // Input first name
+		chromedp.SendKeys("#ctl00_plcMain_txtLastName", "Kreme"),                                   // Input last name
+		chromedp.SendKeys("#ctl00_plcMain_ddlBirthdayMM", tomorrowMonth),                           // Input birthday month
+		chromedp.SendKeys("#ctl00_plcMain_ddlBirthdayDD", tomorrowDay),                             // Input birthday day
+		chromedp.SendKeys("#ctl00_plcMain_txtZipCode", "90001"),                                    // Input zipcode
+		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt1st", randomCharNumerals(3)),            // Input phone number area code
+		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt2nd", randomCharNumerals(3)),            // Input phone number first 3 digits
+		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt3rd", randomCharNumerals(4)),            // Input phone number last 4 digits
+		chromedp.SendKeys("#ctl00_plcMain_txtEmail", "kp"+randomCharNumerals(5)+"@"+catchall),      // Input email
+		chromedp.SendKeys("#ctl00_plcMain_txtPassword", "Donuttime123"),                            // Input password
+		chromedp.Click("#ctl00_plcMain_cbTermsOfUse"),                                              // Click terms of use
 		runFunc(5*time.Minute, func(ctx context.Context) error {
 			if !siteKeyOk {
 				return errors.New("missing data-sitekey")
