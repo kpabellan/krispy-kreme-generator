@@ -80,6 +80,8 @@ func generateKK() {
 	tomorrow := time.Now().AddDate(0, 0, 1)
 	tomorrowDay := strconv.Itoa(tomorrow.Day())
 	tomorrowMonth := strconv.Itoa(int(tomorrow.Month()))
+	catchallEmail := "kp" + randomCharNumerals(5) + "@" + catchall
+	password := "Donuttime123"
 	var siteKey string
 	var siteKeyOk bool
 
@@ -115,8 +117,8 @@ func generateKK() {
 		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt1st", randomCharNumerals(3)),            // Input phone number area code
 		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt2nd", randomCharNumerals(3)),            // Input phone number first 3 digits
 		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt3rd", randomCharNumerals(4)),            // Input phone number last 4 digits
-		chromedp.SendKeys("#ctl00_plcMain_txtEmail", "kp"+randomCharNumerals(5)+"@"+catchall),      // Input email
-		chromedp.SendKeys("#ctl00_plcMain_txtPassword", "Donuttime123"),                            // Input password
+		chromedp.SendKeys("#ctl00_plcMain_txtEmail", catchallEmail),                                // Input email
+		chromedp.SendKeys("#ctl00_plcMain_txtPassword", password),                                  // Input password
 		chromedp.Click("#ctl00_plcMain_cbTermsOfUse"),                                              // Click terms of use
 		runFunc(5*time.Minute, func(ctx context.Context) error {
 			if !siteKeyOk {
@@ -139,6 +141,7 @@ func generateKK() {
 		fmt.Printf("Krispy Kreme Generation Failed. (%s)\n", err)
 	} else {
 		fmt.Printf("Krispy Kreme Generation Success!\n")
+		fmt.Printf("Email: %s\nPassword: %s", catchallEmail, password)
 	}
 }
 
