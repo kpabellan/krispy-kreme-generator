@@ -141,7 +141,7 @@ func generateKK() {
 		fmt.Printf("Krispy Kreme Generation Failed. (%s)\n", err)
 	} else {
 		fmt.Printf("Krispy Kreme Generation Success!\n")
-		fmt.Printf("Email: %s\nPassword: %s", catchallEmail, password)
+		fmt.Printf("Email: %s\nPassword: %s\n", catchallEmail, password)
 	}
 }
 
