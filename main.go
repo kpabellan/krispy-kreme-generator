@@ -119,6 +119,7 @@ func generateKK() {
 		chromedp.SendKeys("#ctl00_plcMain_ucPhoneNumber_txt3rd", randomCharNumerals(4)),            // Input phone number last 4 digits
 		chromedp.SendKeys("#ctl00_plcMain_txtEmail", catchallEmail),                                // Input email
 		chromedp.SendKeys("#ctl00_plcMain_txtPassword", password),                                  // Input password
+		chromedp.SendKeys("#ctl00_plcMain_confirmPasswordTxt", password),                           // Confirm password
 		chromedp.Click("#ctl00_plcMain_cbTermsOfUse"),                                              // Click terms of use
 		runFunc(5*time.Minute, func(ctx context.Context) error {
 			if !siteKeyOk {
