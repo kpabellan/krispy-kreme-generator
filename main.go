@@ -176,6 +176,7 @@ func generateKK(proxy string) {
 		chromedp.ActionFunc(typeAction("#ctl00_plcMain_txtEmail", catchallEmail)),                     // Input email
 		chromedp.ActionFunc(typeAction("#ctl00_plcMain_txtPassword", password)),                       // Input password
 		chromedp.ActionFunc(typeAction("#ctl00_plcMain_confirmPasswordTxt", password)),                // Input confirm password
+
 		runFunc(5*time.Minute, func(ctx context.Context) error {
 			if !siteKeyOk {
 				return errors.New("missing data-sitekey")
